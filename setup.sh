@@ -26,7 +26,7 @@ phpmyadmin      phpmyadmin/mysql/app-pass       password $DEFAULTPASS
 EOF
 
 echo "--- Instalando pacotes basicos ---"
-sudo apt-get install software-properties-common vim curl python-software-properties git-core git --assume-yes
+sudo apt-get install software-properties-common vim curl git-core git --assume-yes
 
 
 echo "--- Atualizando lista de pacotes ---"
@@ -36,11 +36,11 @@ echo "--- Instalando MySQL, Phpmyadmin e alguns outros modulos ---"
 sudo apt-get install mysql-server mysql-client phpmyadmin --assume-yes 
 
 echo "--- Instalando PHP, Apache e alguns modulos ---"
-sudo apt-get install php7.4 php7.4-common apache2 --assume-yes
-sudo apt-get install php7.4-cli libapache2-mod-php7.4 php7.4-mysql php-memcached php7.4-dev php7.4-sqlite3 php*-mysql php-xml php-mbstring php7.4-curl php7.4-gd php7.4-json php7.4-mbstring zip unzip --assume-yes
+sudo apt-get install -y php7.4 apache2  php7.4-common libapache2-mod-php7.4
+sudo apt-get install -y php-cli php-mysql php-memcached php-dev php-sqlite3 php*-mysql php-xml php-mbstring php-curl php-gd php-json php-mbstring zip unzip
+
 
 echo "--- Habilitando o PHP 7.4 ---"
-#sudo a2dismod php5
 sudo a2enmod php7.4
 
 echo "--- Habilitando mod-rewrite do Apache ---"
@@ -54,6 +54,7 @@ curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 # Instale apartir daqui o que você desejar 
+echo "--- Instalando o Netconfig ---"
 sudo apt-get install netconfig --assume-yes
 
 echo "[OK] --- Ambiente de desenvolvimento concluido ---"
